@@ -1,0 +1,56 @@
+h1, h2, h3, h4 , h5 {
+
+/* h1 */
+font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+/* identical to box height, or 150% */
+
+
+/* Black 0.88% */
+
+color: rgba(0, 0, 0, 0.88);
+
+}
+
+h1 {
+ 
+    font-size: 36px;
+    line-height: 54px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 48px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+h5 {
+    font-size: 18px;
+    line-height: 27px;
+}
+
+p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.orange {
+    background-color:  #FF8822;
+}
+
+.white {
+    background-color: #FFFFFF;
+}

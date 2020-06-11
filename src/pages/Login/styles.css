@@ -1,0 +1,115 @@
+.logo {
+     /* defines the background color of the image */
+    mask: url(./../../assets/logo.svg) no-repeat center / contain;
+    -webkit-mask: url(./../../assets/logo.svg) no-repeat center / contain;
+  }
+  .icon-center {
+    width: 112px;
+    height: 80px;
+    position: absolute;
+    left: 45.9%;
+    right: 45.9%;
+    top: 12.92%;
+    bottom: 76.56%;
+  }
+  @media only screen and (max-width: 850px) {
+    .icon-center {
+      left: 40.3%;
+      right: 45.9%;
+      align-content: center;
+      align-items: center! important;
+    }
+  }
+
+.red {
+    background: red;
+}
+.yellow {
+    background: yellow;
+}
+.green {
+    background: green;
+}
+
+.sr-only {
+  
+  z-index: 2;
+  float: left;
+  height: 10px;
+  width: auto;
+  padding: 0px 5px 0px 5px;
+  position: relative;
+  left: 20px;
+  top: 14px;
+  color: black;
+  background-color: #fff;
+  font-size: 12px;
+  line-height: 10px;
+}
+ 
+
+.pd-top-md {
+    padding-top: 185px! important;
+}
+
+.pd-top-lg{
+    position: absolute;
+    height: 24px;
+    left: 40.48%;
+    right: 40.41%;
+    top: 560px! important ;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 430px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+
+  border: 1px solid #FF8822;
+  box-shadow: 0 0 10px #FF8822;
+
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+}
+
+.form-shape {
+  
+    /* Black 0.56% */
+
+    border: 1px solid rgba(0, 0, 0, 0.56);
+    box-sizing: border-box;
+    border-radius: 5px! important;
+}
+
+.text-upper {
+  /* Button */
+font-family: Open Sans;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 22px;
+
+}
