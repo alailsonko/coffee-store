@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "./styles.css"
 import Button from './../../components/Button'
 
@@ -18,7 +19,11 @@ function Login() {
       <span className="btn">RECUPERAR MINHA SENHA</span>  
     </div>
   </div>
-  <Button>Entrar</Button>
+  <Link to="/dashboard">
+  <Button>
+  Entrar
+  </Button>
+  </Link>
   <p class="pd-top-lg text-center">Infoway Gestão em Saúde ©, 2019.</p>
 </form> 
         </div>

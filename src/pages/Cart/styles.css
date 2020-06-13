@@ -1,26 +1,26 @@
-.container-grid {
+.container-cart-grid {
     display: grid;
     
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
     grid-template-rows: 128vh;
     grid-template-areas:
-                         "main aside"
+                         "aside main main-aside"
                          
   }
   @media only screen and (max-width: 850px) {
-    .container-grid {
+    .container-cart-grid {
         display: grid;
         grid-template-columns:3fr;
         grid-template-rows: 40vh 100vh;
         grid-template-areas: "aside"
                              "main"
     }
-    .main-grid {
+    .main-cart-grid {
         background: blue;
         grid-area: main;
       }
       
-      .aside-grid {
+      .aside-cart-grid {
         background: green;
         
         grid-area: aside;
@@ -28,26 +28,20 @@
   }
    
   
-  .main-grid {
+  .main-cart-grid {
     background: blue;
     height: 100%;     
     grid-area: main;
   }
+  .main-aside-cart-grid {
+    background: green;
+    height: 100%;     
+    grid-area: main-aside;
+  }
   
-  .aside-grid {
+  .aside-cart-grid {
     background: green;
     height: 100%;     
     
     grid-area: aside;
   }
-
-  
-  
- 
-  
-.icon { 
-    padding: 10px; 
-    
-    min-width: 50px; 
-    text-align: center; 
-}

@@ -1,6 +1,6 @@
-h1, h2, h3, h4 , h5 {
+h1, h2, h3, h4, h5, h6, p {
 
-/* h1 */
+
 font-family: Open Sans;
 font-style: normal;
 font-weight: normal;
@@ -39,18 +39,29 @@ h5 {
     line-height: 27px;
 }
 
+h6 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
 p {
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
     line-height: 24px;
 }
 
 .orange {
-    background-color:  #FF8822;
+    background-color:  #FF8822! important;
 }
 
 .white {
-    background-color: #FFFFFF;
+    background-color: #FFFFFF! important;
+}
+
+.icon-orange {
+    color: #FF8822! important;
+}
+
+.icon-white {
+    color: #FFFFFF! important;
 }
