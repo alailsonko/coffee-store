@@ -1,19 +1,363 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { Line } from 'rc-progress'
+import { IoMdAdd } from 'react-icons/io'
+import { IoMdRemove } from 'react-icons/io'
+import { AiOutlineSearch } from 'react-icons/ai'
+
+import back from "../../assets/back.png";
+import arrow from "../../assets/arrow-right.svg";
+import ilustration from "../../assets/Illustration.png";
 
 import Aside from './../../components/Aside'
+import Welcome from './../../components/Welcome'
+import Icon from './../../components/Icon'
+import Typography from './../../components/Typography'
+import Input from './../../components/Input'
+import Card from './../../components/Card'
+import Thumb from './../../components/Thumb'
+import Header from './../../components/header'
+import ItemCart from './../../components/ItemCart'
+
+import FormatNumber from './../../utils/FormatNumber'
+import AmountCart from './../../utils/AmountCart'
+
+import api from './../../services/products/api'
+
+import chefKitchen from './../../assets/chef-kitchen.svg'
 
 import "./styles.css"
 
 function Cart() {
+
+    const [search, setSearch] = useState("")
+    const [products, setProducts] = useState([])
+    const [increment, setIncrement] = useState(1)
+    const [showDetail, setShowDetail] = useState(false)
+    const [itemDetail, setItemDetail] = useState({})
+    const [option, setOption] = useState("")
+    const [observation, setObservation] = useState("")
+    const [cart, setCart] = useState([])
+
+
+    useEffect(() => {
+        loadData();
+    }, [])
+    const loadData = async () => {
+        try {
+            let response = await api.fetchData();
+            setProducts(response)
+        } catch (e) {
+            console.log(e)
+        }
+    };
+
+    const addCart = (item) => {
+        const formatItem = {
+            id: item.id,
+            observation,
+            price: item.price,
+            name: item.name,
+            qnt: increment,
+            img: item.imgItem
+        }
+
+        setCart([...cart, formatItem]);
+        setShowDetail(false);
+        setIncrement(1);
+        setObservation("")
+        setOption("")
+    };
+    
+    const renderDetail = (item) => {
+        setItemDetail(item);
+        setShowDetail(true);
+    };
+
+    const amountItem = (price, increment) => {
+        const amount = price * increment;
+        return FormatNumber(amount)
+    }
+
+    function renderItems() {
+        return products.map((item, index) => (
+            <ItemCart 
+                key={item.id}
+                cart={cart}
+                item={item}
+                renderDetail={() => renderDetail(item)}
+            />
+        ))
+    }
+
+
+    const saveCart = () => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+
+    const renderCart = () => {
+        if(cart.length > 0) {
+            return (
+                <div className="cart-content">
+                   <p>Total: {AmountCart(cart)}</p>
+                   <div>
+                       <p>Avançar</p>
+                      <Icon className="fa fa-angle-right fa-2x"></Icon>
+
+                   </div>
+                </div>
+            )
+        }
+    }
+
+    const decrementItem = () => {
+        if(increment > 1) {
+            setIncrement(increment - 1);
+        }
+    }
+
+    const incrementItem = () => {
+        setIncrement(increment + 1);
+    }
+
+    const searchFilterFunction = (text) => {
+        setSearch(text);
+
+        const newData = products.filter((item) => {
+            const itemData = `${item.name.toUpperCase()} ${item.name.toUpperCase} ${item.name.toUpperCase()}`;
+            const textData = text.toUpperCase();
+
+            return itemData.indexOf(textData) > -1;
+        });
+        setProducts(newData);
+        if (text.length == 0) {
+            loadData()
+        }
+    }
+
     return (
         <div className="container-cart-grid">
             <Aside />
-            <div className="main-cart-grid">
+
+
+             {/* start-main-grid */}
+            <div className="main-cart-grid"> 
+               {!showDetail && (
+                <div> {/*  start-content-product */}
+
+               
+                <div>  {/* start-Content-new-order */}
+                    
+                    <div>
+                        <img  src={back} alt="back" />
+                        <h3>Novo Pedido</h3>
+                        
+                    </div>
+
+                    <div>
+                    <img src={ilustration} alt="Ilustration" />
+                    </div>
+
+                </div> 
+             
+
+
+                </div> 
+            
+
+               )}
+
+              {showDetail && (
+                <div> {/*  start-content-product */}
+
+                            
+                <div>  {/* start-Content-new-order */}
+                    
+                    <div>
+                        <img  src={back} alt="back" />
+                        <h3>Novo Pedido</h3>
+                        
+                    </div>
+
+                    <div>
+                    <img src={ilustration} alt="Ilustration" />
+                    </div>
+
+                </div> 
+
+
+
+                </div> 
+              )}
+
+
+            
             </div>
+             {/* end-main-grid */}
+            
             <div className="main-aside-cart-grid">
+              
+                   {!showDetail && (
+                   <div>   {/* start-description-order */}
+                   <Header />
+                     
+                      <div> {/* start-content-info-order */}
+                           <h1>Informações para o Pedido</h1>
+                           <div />
+                      </div>
+                      <div> 
+                        <p>
+                            Preencha as informações abaixo para concluir esta venda.
+                        </p>
+                      </div> {/* end-content-info-order */}
+                      <div>
+                          <p>
+                              Passo 1 de 3
+                          </p>
+                      </div>
+                      <Line
+                         percent="33"
+                         style={{width: "90%"}}
+                         strokeWidth="3"
+                         strokeColor="#ff8822"
+                         trailWidth={3}
+                         trailColor={"#E6E6E6"}
+                      />
+                      <div >
+                          <p>
+                           O que você está vendendo?
+                          </p>
+                      </div>
+                      <div>
+                          <AiOutlineSearch 
+                              style={{ marginTop: "3%" }}
+                              color="#ff8822"
+                              size={23}
+                          />
+                          <div>
+                          <input 
+                              type="text"
+                              onChange={(e) => searchFilterFunction(e.target.value)}
+                              value={search}
+                              placeholder=" "
+                          />
+                          <label>Procure o produto aqui...</label>
+                          </div>
+                      </div>
+                      {renderItems()}
+                      {renderCart()}
+
+                   </div>  
+                   )}
+                    
+                    {showDetail && (
+                                
+                       <div>      {/* start-description-order */}    
+                           
+                           <Header />
+                           <div>
+                               <div onClick={() => setShowDetail(false)}>
+                                   <img src={back} alt="back" />
+                               </div>
+                               <h3>Detalhes do pedido</h3>
+                               <div className="" />
+                               <p>
+                                   Aproveite para adicionar alguma observação para este pedido,
+                                   caso queira
+                               </p>
+                           </div>
+                            
+                            {/* start-detail-order */}
+                            <div>
+                                <div>
+                                    <div>
+                                        <img src={itemDetail && itemDetail.imgItem} alt="img item" />
+                                    </div>
+                                    <div>
+                                        <p>
+                                            {itemDetail && itemDetail.name}
+                                        </p>
+                                        <p>
+                                            {itemDetail && FormatNumber(itemDetail.price)}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h6>opções</h6>
+                                <p>
+                                    Escolha dentre as opções de massas abaixo.
+                                </p>
+                            </div>  
+                            {itemDetail &&
+                               itemDetail.options.map((option) => (
+                                   <div>
+                                      <div>
+                                      <input 
+                                          type="radio"
+                                          id="option"
+                                          name="option"
+                                          onChange={(e) => setOption(e.target.value)}
+                                          value={option.name}
+                                      />
+                                      <label>{option.name}</label>
+                                      </div>
+                                      <div></div>
+                                   </div>
+                               ))}               
+                               
+                               <div>
+                                  <div>
+                                  <h6>Observações</h6>
+                                     <div>
+                                        <label>
+                                            <input 
+                                                placeholder=" "
+                                                type="text"
+                                                onChange={(e) => setObservation(e.target.value)}
+                                            />
+                                            <span>Observações</span>
+                                        </label>
+                                     </div>
+                                  </div>
+                                   
+                                   {option && (
+                                       <div>
+                                          <div>
+                                              <IoMdRemove
+                                                color={"#FF8822"}
+                                                onClick={() => incrementItem()}
+                                              />
+                                          </div>
+                                          <div>
+                                             <button type="button" onClick={() => addCart(itemDetail)} >
+                                                Adicionar {amountItem(itemDetail.price, increment)}
+                                             </button>
+                                          </div>
+                                       </div>
+                                   )}
+
+
+
+                               </div>
+
+
+                       </div>
+
+
+
+
+                    )}
+                   
+      
+
             </div>
+             
+
         </div>
     )
 }
 
 export default Cart;
+

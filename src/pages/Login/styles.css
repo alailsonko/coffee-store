@@ -3,6 +3,7 @@
     mask: url(./../../assets/logo.svg) no-repeat center / contain;
     -webkit-mask: url(./../../assets/logo.svg) no-repeat center / contain;
   }
+
   .icon-center {
     width: 112px;
     height: 80px;

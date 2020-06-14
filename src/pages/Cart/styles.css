@@ -29,7 +29,7 @@
    
   
   .main-cart-grid {
-    background: blue;
+    /* background: blue; */
     height: 100%;     
     grid-area: main;
   }
@@ -45,3 +45,24 @@
     
     grid-area: aside;
   }
+
+  .chef-kitchen-svg-position {
+    position: absolute;
+    width: 317px;
+    height: 248px;
+    left: 32.0%;
+    top: 260px;
+   }
+   .cart-content {
+    position: inherit;
+    margin-top: 42%;
+
+    width: 100%;
+  }
+  .cart-content p {
+    padding-left: 9px;
+  }
+  .cart-content a {
+    margin-right: 6%;
+  }
+
