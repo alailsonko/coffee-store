@@ -153,7 +153,7 @@ function Cart() {
                
                 <div>  {/* start-Content-new-order */}
                     
-                    <div style={{margin: "10%"}}>
+                    <div style={{margin: "10%", marginTop: "13.6%"}}>
                       <Link>
                       <img  src={back} alt="back" />
                       </Link>
@@ -181,7 +181,7 @@ function Cart() {
                             
                 <div>  {/* start-Content-new-order */}
                     
-                    <div>
+                    <div  style={{margin: "10%", marginTop: "13.6%"}}>
                       <Link>
                       <img  src={back} alt="back" />
                       </Link>
@@ -209,11 +209,11 @@ function Cart() {
             <div className="main-aside-cart-grid">
               
                    {!showDetail && (
-                   <div>   {/* start-description-order */}
+                   <div >   {/* start-description-order */}
                    <Header />
-                     
-                      <div> {/* start-content-info-order */}
-                           <h1>Informações para o Pedido</h1>
+                       <div style={{marginLeft: "3%"}}>
+                      <div style={{marginTop: "4.8%"}}> {/* start-content-info-order */}
+                           <h3>Informações para o Pedido</h3>
                            <Divisor style={{width: "50%"}} />
                       </div>
                       <div> 
@@ -239,6 +239,8 @@ function Cart() {
                            O que você está vendendo?
                           </p>
                       </div>
+                      </div>
+
                       <div>
                          
                           <div className="input-group">
@@ -265,7 +267,7 @@ function Cart() {
                        <div>      {/* start-description-order */}    
                            
                            <Header />
-                           <div>
+                           <div style={{marginLeft: "3%"}}>
                                <div onClick={() => setShowDetail(false)}>
                                    <img src={back} alt="back" />
                                </div>
@@ -278,7 +280,7 @@ function Cart() {
                            </div>
                             
                             {/* start-detail-order */}
-                            <div>
+                             
                                 <Card>
                                     <div>
                                         <Thumb src={itemDetail && itemDetail.imgItem} alt="img item" />
@@ -292,25 +294,29 @@ function Cart() {
                                         </p>
                                     </div>
                                 </Card>
-                            </div>
-                            <div>
-                                <h6>opções</h6>
-                                <p>
+                     
+                            <div >
+                               <h6 style={{marginTop:"7%", marginLeft: "3%"}}>opções</h6>
+
+                              
+                               <p style={{marginLeft: "3%"}}>
                                     Escolha dentre as opções de massas abaixo.
                                 </p>
+                              
                             </div>  
                             {itemDetail &&
                                itemDetail.options.map((option) => (
                                    <Card>
                                       <div>
                                       <input 
+                                          style={{marginLeft: "6%"}}
                                           type="radio"
                                           id="option"
                                           name="option"
                                           onChange={(e) => setOption(e.target.value)}
                                           value={option.name}
                                       />
-                                      <label>{option.name}</label>
+                                      <label style={{ fontWeight: "normal", marginTop: "5%", marginLeft: "8%", fontSize: "16px", lineHeight: "24px", color: "rgba(0,0,0,0.56)"}}>{option.name}</label>
                                       </div>
                                       <div></div>
                                    </Card>
