@@ -6,7 +6,7 @@ const Main = styled.main`
     height: 100%;
     left: 342px;
     top: 0px;
-    background-color: green;
+    background: #FAFAFA;
 `
 
 export default Main;

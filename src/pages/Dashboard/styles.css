@@ -16,12 +16,12 @@
                              "main"
     }
     .main-grid {
-        background: blue;
+        
         grid-area: main;
       }
       
       .aside-grid {
-        background: green;
+       
         
         grid-area: aside;
       }
@@ -29,13 +29,13 @@
    
   
   .main-grid {
-    background: blue;
+  
     height: 100%;     
     grid-area: main;
   }
   
   .aside-grid {
-    background: green;
+  
     height: 100%;     
     
     grid-area: aside;

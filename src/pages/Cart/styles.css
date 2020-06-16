@@ -2,7 +2,7 @@
     display: grid;
     
     grid-template-columns: 1fr 1.5fr 1.5fr;
-    grid-template-rows: 128vh;
+    grid-template-rows: 178vh;
     grid-template-areas:
                          "aside main main-aside"
                          
@@ -34,13 +34,13 @@
     grid-area: main;
   }
   .main-aside-cart-grid {
-    background: green;
+   
     height: 100%;     
     grid-area: main-aside;
   }
   
   .aside-cart-grid {
-    background: green;
+   
     height: 100%;     
     
     grid-area: aside;

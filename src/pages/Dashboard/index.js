@@ -13,6 +13,7 @@ import Typography from './../../components/Typography';
 
 import './styles.css';
 import Header from '../../components/header';
+import styled from 'styled-components';
 
 function Dashboard() {
     return (
@@ -20,11 +21,6 @@ function Dashboard() {
         <div className="container-grid">
     
         <Aside className="grid-aside"/>
-
-
-      
-              
-     
           <Main className="grid-main">
            <Header />
           <Welcome>
@@ -32,8 +28,12 @@ function Dashboard() {
           </Welcome>
           <Link to="/dashboard/cart">
           <Card style={{"cursor": "pointer"}} className="">
-          <Icon className="fas fa-plus fa-2x icon-orange"></Icon>
-          
+          <div className="row">
+          <Icon style={{paddingLeft: "2.2%"}} className="fas fa-plus fa-2x icon-orange"></Icon>
+            <p style={{ fontSize:"24px",marginLeft: "6%", marginTop: "2.3%" }}>
+            Fazer Novo Pedido
+            </p>
+          </div>
           </Card>
           </Link>
 
@@ -55,25 +55,35 @@ function Dashboard() {
            <h6 className="ml-5">13/05/2019,<span className="text-muted"> Você vendeu</span> R$ 45,80</h6>
           <Card className="btn">
            <Thumb className="Thumb-di " src="https://picsum.photos/200/300" />
-
+           <NameClient className="">Lorem Ipsum</NameClient>
+            <Caption >some new text about the project</Caption>
+            <PriceNegrito>R$ 45,90</PriceNegrito>
            </Card>
            <Card className="btn">
            <Thumb className="Thumb-di " src="https://picsum.photos/200/300" />
-
+           <NameClient className="">Lorem Ipsum</NameClient>
+           <Caption >some new text about the project</Caption>
+           <PriceNegrito>R$ 45,90</PriceNegrito>
            </Card>           
            <Card className="btn">
            <Thumb className="Thumb-di " src="https://picsum.photos/200/300" />
-
+           <NameClient className="">Lorem Ipsum</NameClient>
+           <Caption >some new text about the project</Caption>
+           <PriceNegrito>R$ 45,90</PriceNegrito>
            </Card>
            <h6 className="ml-5">13/05/2019,<span className="text-muted"> Você vendeu</span> R$ 123,50</h6>
 
            <Card className="btn">
            <Thumb className="Thumb-di " src="https://picsum.photos/200/300" />
-
+           <NameClient className="">Lorem Ipsum</NameClient>
+           <Caption >some new text about the project</Caption>
+           <PriceNegrito>R$ 45,90</PriceNegrito>
            </Card>
            <Card className="btn">
            <Thumb className="Thumb-di " src="https://picsum.photos/200/300" />
-
+           <NameClient className="">Lorem Ipsum</NameClient>
+           <Caption >some new text about the project</Caption>
+           <PriceNegrito>R$ 45,90</PriceNegrito>
            </Card>
  
           </Main> 
@@ -88,6 +98,25 @@ function Dashboard() {
         </>
     )
 }
+
+const NameClient = styled.h6`
+   float: left;
+   margin-left: 4%;
+
+`
+const Caption = styled.p`
+   float: left;
+   margin-top: 25px;
+   margin-left: -10%;
+   font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    color: rgba(0, 0, 0, 0.54);
+`
+const PriceNegrito = styled.h6`
+     float: right;
+`
 
 
 export default Dashboard;

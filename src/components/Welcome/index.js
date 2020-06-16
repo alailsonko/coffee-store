@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import Card from './../Card'
 
 const Welcome = styled(Card)`
-    background-color: white;
+
     height: 60px;
     width: 22%;
-    box-shadow: 0px 0.5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 ;
     border-radius: 0px;
     border: 0;
     outline: 0;

@@ -28,6 +28,7 @@ import api from './../../services/products/api'
 import chefKitchen from './../../assets/chef-kitchen.svg'
 
 import "./styles.css"
+import styled from 'styled-components';
 
 function Cart() {
 
@@ -101,11 +102,14 @@ function Cart() {
             return (
                 <div className="cart-content">
                    <p>Total: {AmountCart(cart)}</p>
-                   <div>
+                 <Link onClick={() => saveCart()} to="/dashboard/client">
+                 <div className="btn">
                        <p>Avançar</p>
                       <Icon className="fa fa-angle-right fa-2x"></Icon>
 
                    </div>
+                 </Link>
+                
                 </div>
             )
         }
@@ -149,13 +153,16 @@ function Cart() {
                
                 <div>  {/* start-Content-new-order */}
                     
-                    <div>
-                        <img  src={back} alt="back" />
+                    <div style={{margin: "10%"}}>
+                      <Link>
+                      <img  src={back} alt="back" />
+                      </Link>
+                   
                         <h3>Novo Pedido</h3>
-                        
+                        <Divisor />
                     </div>
 
-                    <div>
+                    <div style={{marginLeft: "24%", marginTop: "15%"}}>
                     <img src={ilustration} alt="Ilustration" />
                     </div>
 
@@ -175,12 +182,15 @@ function Cart() {
                 <div>  {/* start-Content-new-order */}
                     
                     <div>
-                        <img  src={back} alt="back" />
+                      <Link>
+                      <img  src={back} alt="back" />
+                      </Link>
+                       
                         <h3>Novo Pedido</h3>
-                        
+                         <Divisor />
                     </div>
 
-                    <div>
+                    <div  style={{marginLeft: "24%", marginTop: "15%"}}>
                     <img src={ilustration} alt="Ilustration" />
                     </div>
 
@@ -204,7 +214,7 @@ function Cart() {
                      
                       <div> {/* start-content-info-order */}
                            <h1>Informações para o Pedido</h1>
-                           <div />
+                           <Divisor style={{width: "50%"}} />
                       </div>
                       <div> 
                         <p>
@@ -230,20 +240,19 @@ function Cart() {
                           </p>
                       </div>
                       <div>
-                          <AiOutlineSearch 
-                              style={{ marginTop: "3%" }}
-                              color="#ff8822"
-                              size={23}
-                          />
-                          <div>
-                          <input 
-                              type="text"
-                              onChange={(e) => searchFilterFunction(e.target.value)}
-                              value={search}
-                              placeholder=" "
-                          />
-                          <label>Procure o produto aqui...</label>
-                          </div>
+                         
+                          <div className="input-group">
+          <div className="input-group-addon">
+          <span>
+          <Icon style={{"marginLeft":"26px", marginTop: "15px","position": "absolute"}} className="fas fa-search fa-2x icon-orange"></Icon>
+
+          </span>
+         
+          </div>
+
+          <Input style={{"text-indent": "50px"}} className="" placeholder="Pesquise algum cliente" type="search" autoFocus></Input>
+            
+          </div>
                       </div>
                       {renderItems()}
                       {renderCart()}
@@ -261,7 +270,7 @@ function Cart() {
                                    <img src={back} alt="back" />
                                </div>
                                <h3>Detalhes do pedido</h3>
-                               <div className="" />
+                               <Divisor />
                                <p>
                                    Aproveite para adicionar alguma observação para este pedido,
                                    caso queira
@@ -270,9 +279,9 @@ function Cart() {
                             
                             {/* start-detail-order */}
                             <div>
-                                <div>
+                                <Card>
                                     <div>
-                                        <img src={itemDetail && itemDetail.imgItem} alt="img item" />
+                                        <Thumb src={itemDetail && itemDetail.imgItem} alt="img item" />
                                     </div>
                                     <div>
                                         <p>
@@ -282,7 +291,7 @@ function Cart() {
                                             {itemDetail && FormatNumber(itemDetail.price)}
                                         </p>
                                     </div>
-                                </div>
+                                </Card>
                             </div>
                             <div>
                                 <h6>opções</h6>
@@ -292,7 +301,7 @@ function Cart() {
                             </div>  
                             {itemDetail &&
                                itemDetail.options.map((option) => (
-                                   <div>
+                                   <Card>
                                       <div>
                                       <input 
                                           type="radio"
@@ -304,7 +313,7 @@ function Cart() {
                                       <label>{option.name}</label>
                                       </div>
                                       <div></div>
-                                   </div>
+                                   </Card>
                                ))}               
                                
                                <div>
@@ -359,5 +368,14 @@ function Cart() {
     )
 }
 
+
+const Divisor = styled.div`
+    background: #ff8822;
+    width: 24%;
+
+    display: flex;
+    height: 3px;
+    margin-left: 0%;
+`
 export default Cart;
 
