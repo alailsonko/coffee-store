@@ -10,20 +10,22 @@
   @media only screen and (max-width: 850px) {
     .container-cart-grid {
         display: grid;
-        grid-template-columns:3fr;
-        grid-template-rows: 40vh 100vh;
+        grid-template-columns: 4fr;
+        grid-template-rows: 50vh 70vh 120vh;
         grid-template-areas: "aside"
                              "main"
+                             "main-aside"
     }
     .main-cart-grid {
-        background: blue;
         grid-area: main;
       }
       
       .aside-cart-grid {
-        background: green;
         
         grid-area: aside;
+      }
+      .mob-pos-ilus {
+        margin-right: 40%! important;
       }
   }
    

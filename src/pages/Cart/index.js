@@ -4,31 +4,29 @@ import { Link } from 'react-router-dom';
 import { Line } from 'rc-progress'
 import { IoMdAdd } from 'react-icons/io'
 import { IoMdRemove } from 'react-icons/io'
-import { AiOutlineSearch } from 'react-icons/ai'
 
 import back from "../../assets/back.png";
 import arrow from "../../assets/arrow-right.svg";
-import ilustration from "../../assets/Illustration.png";
+import ilustration from './../../assets/Illustration.png'
 
 import Aside from './../../components/Aside'
-import Welcome from './../../components/Welcome'
 import Icon from './../../components/Icon'
-import Typography from './../../components/Typography'
 import Input from './../../components/Input'
 import Card from './../../components/Card'
 import Thumb from './../../components/Thumb'
 import Header from './../../components/header'
 import ItemCart from './../../components/ItemCart'
+import ButtonSquare from './../../components/ButtonSquare'
+import ButtonSquareLarge from './../../components/ButtonSquareLarge'
+import Divisor from './../../components/Divisor'
 
 import FormatNumber from './../../utils/FormatNumber'
 import AmountCart from './../../utils/AmountCart'
 
 import api from './../../services/products/api'
 
-import chefKitchen from './../../assets/chef-kitchen.svg'
 
 import "./styles.css"
-import styled from 'styled-components';
 
 function Cart() {
 
@@ -100,17 +98,17 @@ function Cart() {
     const renderCart = () => {
         if(cart.length > 0) {
             return (
-                <div className="cart-content">
-                   <p>Total: {AmountCart(cart)}</p>
-                 <Link onClick={() => saveCart()} to="/dashboard/client">
-                 <div className="btn">
+                <ButtonSquareLarge >
+                   <p style={{float: "left"}}>Total: {AmountCart(cart)}</p>
+                 <Link className="icon-white" onClick={() => saveCart()} to="/dashboard/client">
+                
                        <p>Avançar</p>
-                      <Icon className="fa fa-angle-right fa-2x"></Icon>
+                      <Icon style={{float: "right", marginTop: "-10%"}} className="fa fa-angle-right fa-2x"></Icon>
 
-                   </div>
+                  
                  </Link>
                 
-                </div>
+                </ButtonSquareLarge>
             )
         }
     }
@@ -154,7 +152,7 @@ function Cart() {
                 <div>  {/* start-Content-new-order */}
                     
                     <div style={{margin: "10%", marginTop: "13.6%"}}>
-                      <Link>
+                      <Link to="/dashboard">
                       <img  src={back} alt="back" />
                       </Link>
                    
@@ -162,7 +160,7 @@ function Cart() {
                         <Divisor />
                     </div>
 
-                    <div style={{marginLeft: "24%", marginTop: "15%"}}>
+                    <div style={{marginLeft: "24%", marginTop: "15%"}} className="mob-pos-ilus">
                     <img src={ilustration} alt="Ilustration" />
                     </div>
 
@@ -182,7 +180,7 @@ function Cart() {
                 <div>  {/* start-Content-new-order */}
                     
                     <div  style={{margin: "10%", marginTop: "13.6%"}}>
-                      <Link>
+                      <Link to="/dashboard">
                       <img  src={back} alt="back" />
                       </Link>
                        
@@ -268,9 +266,12 @@ function Cart() {
                            
                            <Header />
                            <div style={{marginLeft: "3%"}}>
-                               <div onClick={() => setShowDetail(false)}>
+                           <Link>
+                           <div onClick={() => setShowDetail(false)}>
                                    <img src={back} alt="back" />
                                </div>
+                           </Link>
+                              
                                <h3>Detalhes do pedido</h3>
                                <Divisor />
                                <p>
@@ -324,31 +325,33 @@ function Cart() {
                                
                                <div>
                                   <div>
-                                  <h6>Observações</h6>
+                                  <h6 style={{marginLeft: "3.5%", marginTop: "6%", marginBottom: "0"}}>Observações</h6>
                                      <div>
-                                        <label>
-                                            <input 
-                                                placeholder=" "
-                                                type="text"
-                                                onChange={(e) => setObservation(e.target.value)}
-                                            />
-                                            <span>Observações</span>
-                                        </label>
+                                     <label for="inputObservation" style={{marginBottom: "8px", marginLeft: "8px"}} class="sr-only">Observações</label>
+                                    <input type="text" id="inputObservation" style={{height: "50px", width: "94%", marginLeft: "4%", marginRight: ""}} class="white form-control mt-3 form-shape" placeholder="Observações"/>
                                      </div>
                                   </div>
                                    
                                    {option && (
-                                       <div>
-                                          <div>
-                                              <IoMdRemove
+                                       <div style={{marginTop: "5%"}}>
+                                          <div style={{margin: "15%"}}>
+                                           
+                                            <IoMdRemove
+                                            
                                                 color={"#FF8822"}
-                                                onClick={() => incrementItem()}
+                                                onClick={() => decrementItem()}
                                               />
-                                          </div>
-                                          <div>
-                                             <button type="button" onClick={() => addCart(itemDetail)} >
+                                              {increment}
+                                              <IoMdAdd 
+                                                  color={"#FF8822"}
+                                                  onClick={() => incrementItem()}
+                                              />
+                                           
+                                            
+                                           
+                                             <ButtonSquare style={{marginLeft: "10%"}} type="button" onClick={() => addCart(itemDetail)} >
                                                 Adicionar {amountItem(itemDetail.price, increment)}
-                                             </button>
+                                             </ButtonSquare>
                                           </div>
                                        </div>
                                    )}
@@ -374,14 +377,7 @@ function Cart() {
     )
 }
 
-
-const Divisor = styled.div`
-    background: #ff8822;
-    width: 24%;
-
-    display: flex;
-    height: 3px;
-    margin-left: 0%;
-`
+ 
+ 
 export default Cart;
 

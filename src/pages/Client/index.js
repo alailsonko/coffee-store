@@ -4,8 +4,12 @@ import { Link } from "react-router-dom"
 import Aside from "./../../components/Aside";
 import Header from './../../components/header'
 import Clients from './../../components/Clients'
+import Icon from './../../components/Icon'
+import Input from './../../components/Input'
+import Card from './../../components/Card'
+import ButtonSquareLarge from './../../components/ButtonSquareLarge'
+import Divisor from './../../components/Divisor'
 
-import { AiOutlineSearch } from 'react-icons/ai'
 import { Line } from 'rc-progress'
 import CalcItensCart from './../../utils/AmountCart'
 import FormatNumber from './../../utils/FormatNumber'
@@ -98,19 +102,30 @@ function Client() {
    const renderClientsChoise = () => {
        if(clientsChoise.length > 0) {
            return (
-               <div>
-                   <p>
+            <Link onClick={() => saveClients()} to="/dashboard/checkout">
+
+               <ButtonSquareLarge>
+                  <div style={{float: "left", marginTop: "1.5%"}}>
+                  <p>
                        {clientsChoise.length}{" "}
                        {clientsChoise.length > 1 ? "clientes" : "cliente"}{" "}
                        {clientsChoise.length > 1 ? "selecionados" : "selecionado"}
                    </p>
-                   <Link onClick={() => saveClients()} to="/dashboard/status">
+                  </div>
+                  
                       <div>
-                          <p>Avançar</p>
-                          <img src={arrow} alt="avançar" />
+                      <Link>
+                      <p  style={{float: "right", marginRight: "5%", marginTop: "1.5%"}}>Avançar</p>
+
+                      </Link>
+                      
+                          <img  style={{float: "right", marginRight: "-16%", marginTop: "3.0%"}} src={arrow} alt="avançar" />
+                    
+            
                       </div>
-                   </Link>
-               </div>
+                         
+               </ButtonSquareLarge>
+                </Link>
            )
        }
    }
@@ -137,17 +152,18 @@ function Client() {
            <div className="main-cart-grid">
               <div>
                   <div>
-                      <div>
-                          <Link>
+                      <div style={{margin: "10%", marginTop: "13%"}}>
+                          <Link to="/dashboard/cart">
                               <img src={back} alt="back" />
                           </Link>
                           <h3>Novo Pedido</h3>
+                          <Divisor />
                       </div>
                   </div>
                   <div>
                       <h1>Produtos</h1>
                       {productsChoise.map((i) => {
-                         return( <div key={i.id}>
+                         return( <Card key={i.id}>
                             <div>
                                 <Thumb src={i.img} alt="avatar" />
                                 <p>{i.name}</p>
@@ -156,14 +172,14 @@ function Client() {
                                 </p>
                             </div>
                             <p>{i.observation}</p>
-                          </div>)
+                          </Card>)
                  })}
                   </div>
                   <div>
-                      <div>
-                          <p>Total</p>
-                          <p>{CalcItensCart(productsChoise)}</p>
-                      </div>
+                  <div>
+                           <h5 style={{marginLeft: "5%", marginTop: "5%"}}>Total</h5>
+                           <h5 style={{marginLeft: "80%", marginTop: "-6.5%"}}>{CalcItensCart(productsChoise)}</h5>
+                       </div>
                   </div>
               </div>
            </div>
@@ -172,7 +188,7 @@ function Client() {
                      <Header />
                      <div>
                          <h1>Informações para o Pedido</h1>
-                         <div />
+                         <Divisor style={{width: "40%"}} />
                      </div>
                      <div>
                          <p>
@@ -198,19 +214,18 @@ function Client() {
                          </p>
                      </div>
                      <div>
-                         <AiOutlineSearch 
-                             color="#ff8822"
-                             size={23}
-                         />
-                         <div>
-                             <input 
-                                 type="text"
-                                 placeholder=" "
-                                 onChange={(e) => searchFilterFunction(e.target.value)}
-                                 value={search}
-                             />
-                             <label>Procure o cliente aqui...</label>
-                         </div>
+                     <div className="input-group">
+          <div className="input-group-addon">
+          <span>
+          <Icon style={{"marginLeft":"26px", marginTop: "15px","position": "absolute"}} className="fas fa-search fa-2x icon-orange"></Icon>
+
+          </span>
+         
+          </div>
+
+          <Input style={{"text-indent": "50px"}} className="" placeholder="Pesquise algum cliente" type="search" autoFocus></Input>
+            
+          </div>
                      </div>
                      {renderItens()}
                      {renderClientsChoise()}

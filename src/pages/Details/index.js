@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Aside from './../../components/Aside'
 import Main from './../../components/Main'
@@ -16,7 +17,10 @@ function Details() {
             <Main className="grid-main">
             <Header />
               <Welcome style={{"height":"80px"}} className="">
-                  <Icon className="fa fa-angle-left fa-2x"></Icon>
+                 <Link className="icon-orange" to="/dashboard">
+                 <Icon style={{cursor: "pointer"}} className="fa fa-angle-left fa-2x"></Icon>
+
+                 </Link>
                   <Typography style={{"paddingBottom":"3%"}}  className="mt-0">lorem ipsum</Typography>
               </Welcome>
            <h6 className="ml-5">13/05/2019</h6>
