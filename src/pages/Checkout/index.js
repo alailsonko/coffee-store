@@ -8,7 +8,6 @@ import Card from './../../components/Card'
 
 import back from './../../assets/back.png'
 import { Link } from 'react-router-dom'
-import calendarImage from './../../assets/calendar.svg'
 import Calendar from 'react-calendar'
 import "react-calendar/dist/Calendar.css"
 import moment from 'moment'

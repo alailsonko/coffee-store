@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 import Aside from './../../components/Aside'
 import Header from './../../components/header'
 import Button from './../../components/Button'
 
-import avatarNav from './../../assets/avatar-navbar.svg'
 import feedback from './../../assets/feedback.svg'
 
 function Feedback() {
